@@ -19,6 +19,7 @@ defmodule TransactionsWeb.Router do
 
     live "/", PageLive, :index
     live "/users", UserLive, :index
+    live "/transactions", MovementLive, :index
   end
 
   # Other scopes may use custom stacks.
