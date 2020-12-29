@@ -8,6 +8,15 @@ defmodule Transactions.Movements do
 
   alias Transactions.Movements.Movement
 
+  @topic inspect(__MODULE__)
+  def subscribe do
+    Phoenix.PubSub.subscribe(Transactions.PubSub, @topic)
+  end
+
+  defp broadcast_change({:ok, result}, event) do
+    Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+  end
+
   @doc """
   Returns the list of movements.
 
@@ -53,6 +62,7 @@ defmodule Transactions.Movements do
     %Movement{}
     |> Movement.changeset(attrs)
     |> Repo.insert()
+    |> broadcast_change([:movement, :created])
   end
 
   @doc """
@@ -71,6 +81,7 @@ defmodule Transactions.Movements do
     movement
     |> Movement.changeset(attrs)
     |> Repo.update()
+    |> broadcast_change([:movement, :updated])
   end
 
   @doc """
@@ -86,7 +97,7 @@ defmodule Transactions.Movements do
 
   """
   def delete_movement(%Movement{} = movement) do
-    Repo.delete(movement)
+    Repo.delete(movement) |> broadcast_change([:movement, :deleted])
   end
 
   @doc """
