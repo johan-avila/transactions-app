@@ -8,6 +8,15 @@ defmodule Transactions.Users do
 
   alias Transactions.Users.User
 
+  @topic inspect(__MODULE__)
+  def subscribe do
+    Phoenix.PubSub.subscribe(Transactions.PubSub, @topic)
+  end
+
+  defp brodcast_change({:ok, result }, event) do
+    Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+  end
+
   @doc """
   Returns the list of users.
 
@@ -53,6 +62,7 @@ defmodule Transactions.Users do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+    |> brodcast_change([:user, :created])
   end
 
   @doc """
@@ -71,6 +81,7 @@ defmodule Transactions.Users do
     user
     |> User.changeset(attrs)
     |> Repo.update()
+    |> brodcast_change([:user, :updated])
   end
 
   @doc """
@@ -86,7 +97,9 @@ defmodule Transactions.Users do
 
   """
   def delete_user(%User{} = user) do
-    Repo.delete(user)
+    user
+    |> Repo.delete()
+    |> brodcast_change([:user, :deleted])
   end
 
   @doc """

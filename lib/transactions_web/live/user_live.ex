@@ -3,12 +3,16 @@ defmodule TransactionsWeb.UserLive do
   alias Transactions.Users
 
   def mount(_params, _session, socket) do
-
+    Users.subscribe()
     {:ok, fetch(socket)}
   end
 
   def handle_event("add", %{"user" => user}, socket) do
     Users.create_user(user)
+    {:noreply, fetch(socket)}
+  end
+
+  def handle_info({Users, [:users | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
   # handle_event

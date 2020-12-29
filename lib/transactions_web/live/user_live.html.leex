@@ -3,14 +3,12 @@
     <form action="#" phx-submit="add" >
         username: <%= text_input :user, :username, placeholder: "username" %>
         email: <%= email_input :user, :email, placeholder: "email" %>
-        amount: <%= number_input :user, :amount, placeholder: "Initial amount" %>
-        password: <%= password_input :user, :username, placeholder: "username" %>
-
+        amount: <%= text_input :user, :amount, placeholder: "Initial amount" %>
         <%= submit "Add", phx_disable_with: "Adding..." %>
     </form>
 
     <%=for user <- @users do %>
-        <div> <%=  user.email %></div>
+        <div> <%=  user.id %></div>
     <% end %>
 
 </div>
