@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Transactions", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body>
+    <header>
+    <a src="/" >
+      <img alt="monoban" src="https://static.wixstatic.com/media/0913f0_9bef181c13ac4da1a5878a713c9a3297~mv2.png/v1/fill/w_264,h_144,al_c,q_85,usm_0.66_1.00_0.01/Logo_mono_white_edited.webp" />
+    </a>
+    </header>
+
+    <%= @inner_content %>
+  </body>
+</html>
