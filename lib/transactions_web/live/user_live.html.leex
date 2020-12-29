@@ -1,0 +1,16 @@
+<div>
+    <h3>Create User</h3>
+    <form action="#" phx-submit="add" >
+        username: <%= text_input :user, :username, placeholder: "username" %>
+        email: <%= email_input :user, :email, placeholder: "email" %>
+        amount: <%= number_input :user, :amount, placeholder: "Initial amount" %>
+        password: <%= password_input :user, :username, placeholder: "username" %>
+
+        <%= submit "Add", phx_disable_with: "Adding..." %>
+    </form>
+
+    <%=for user <- @users do %>
+        <div> <%=  user.email %></div>
+    <% end %>
+
+</div>
