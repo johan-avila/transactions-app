@@ -19,6 +19,10 @@ defmodule TransactionsWeb.UserSocket do
   def connect(_params, socket, _connect_info) do
     {:ok, socket}
   end
+  
+  ## Transports
+  transport :websocket, Phoenix.Transports.WebSocket,
+    timeout: 45_000
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
