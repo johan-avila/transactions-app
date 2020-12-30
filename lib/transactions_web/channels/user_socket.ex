@@ -2,7 +2,7 @@ defmodule TransactionsWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:*", TransactionsWeb.RoomChannel
+  # channel "room:*", TransactionsWeb.RoomChannel
 
   ## Transports
   # transport :websocket, Phoenix.Transports.WebSocket
