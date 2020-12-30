@@ -2,8 +2,10 @@ defmodule TransactionsWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TransactionsWeb.RoomChannel
+  channel "room:*", TransactionsWeb.RoomChannel
 
+  ## Transports
+  transport :websocket, Phoenix.Transports.WebSocket
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
   # verification, you can put default assigns into
@@ -20,8 +22,6 @@ defmodule TransactionsWeb.UserSocket do
     {:ok, socket}
   end
 
-  ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
