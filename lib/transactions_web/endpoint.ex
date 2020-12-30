@@ -12,14 +12,8 @@ defmodule TransactionsWeb.Endpoint do
 
   socket "/socket", TransactionsWeb.UserSocket,
     websocket: true,
-    longpoll: false,
-    live_reload: [
-      patterns: [
-        ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
-        ~r{web/views/.*(ex)$},
-        ~r{web/templates/.*(eex)$}
-      ]
-    ]
+    longpoll: false
+    
   socket "/live", Phoenix.LiveView.Socket, websocket: [
     connect_info:[
       session: @session_options
