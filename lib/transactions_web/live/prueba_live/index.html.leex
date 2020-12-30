@@ -1,0 +1,37 @@
+<h1>Listing Pruebas</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, TransactionsWeb.PruebaLive.FormComponent,
+    id: @prueba.id || :new,
+    title: @page_title,
+    action: @live_action,
+    prueba: @prueba,
+    return_to: Routes.prueba_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="pruebas">
+    <%= for prueba <- @pruebas do %>
+      <tr id="prueba-<%= prueba.id %>">
+        <td><%= prueba.name %></td>
+        <td><%= prueba.email %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.prueba_show_path(@socket, :show, prueba) %></span>
+          <span><%= live_patch "Edit", to: Routes.prueba_index_path(@socket, :edit, prueba) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: prueba.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Prueba", to: Routes.prueba_index_path(@socket, :new) %></span>

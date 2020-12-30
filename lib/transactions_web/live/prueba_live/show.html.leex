@@ -1,0 +1,27 @@
+<h1>Show Prueba</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, TransactionsWeb.PruebaLive.FormComponent,
+    id: @prueba.id,
+    title: @page_title,
+    action: @live_action,
+    prueba: @prueba,
+    return_to: Routes.prueba_show_path(@socket, :show, @prueba) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @prueba.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @prueba.email %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.prueba_show_path(@socket, :edit, @prueba), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.prueba_index_path(@socket, :index) %></span>
