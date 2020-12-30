@@ -6,12 +6,14 @@ defmodule TransactionsWeb.MovementLive do
     Movements.subscribe()
     {:ok, fetch(socket)}
   end
+
   #Hndle events of HTML
   def handle_event("add", %{"movement" => movement}, socket) do
     Movements.create_movement(movement)
     {:noreply, fetch(socket)}
   end
   #Watcher (Phoenix live)
+  # reason = if reason == :normal, do: {:shutdown, :closed}, else: reason
   def handle_info({Movements,  [:movement | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
