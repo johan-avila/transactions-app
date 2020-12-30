@@ -7,6 +7,15 @@ defmodule Transactions.Application do
 
   def start(_type, _args) do
     children = [
+
+      ##############################################
+      # List all child processes to be supervised
+      # children = [
+      #   {Plug.Cowboy, scheme: :http, plug: MyApp, port: 4040}
+      # ]
+
+      ##############################################
+
       # Start the Ecto repository
       Transactions.Repo,
       # Start the Telemetry supervisor
