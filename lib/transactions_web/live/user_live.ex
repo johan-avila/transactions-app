@@ -12,7 +12,7 @@ defmodule TransactionsWeb.UserLive do
     {:noreply, fetch(socket)}
   end
 
-  def handle_info({Users, [:users | _], _}, socket) do
+  def handle_info({Users, [:user | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
   # handle_event
