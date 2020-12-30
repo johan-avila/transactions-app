@@ -1,7 +1,7 @@
 <div>
     <h2 class="mt-3">Transactions</h2>
 
-    <form action="#" phx-submit="add">
+    <form action="#" phx-track-static phx-submit="add">
       <%= text_input :movement,  :amount, placeholder: "amount" %>
       <%= text_input :movement,  :concept, placeholder: "concept" %>
       <%= text_input :movement,  :user_id, placeholder: "user_id" %>
