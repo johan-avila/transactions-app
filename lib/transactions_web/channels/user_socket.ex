@@ -5,7 +5,7 @@ defmodule TransactionsWeb.UserSocket do
   channel "room:*", TransactionsWeb.RoomChannel
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  # transport :websocket, Phoenix.Transports.WebSocket
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
   # verification, you can put default assigns into
