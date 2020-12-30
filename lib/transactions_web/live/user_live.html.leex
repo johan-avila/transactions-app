@@ -5,6 +5,8 @@
         email: <%= email_input :user, :email, placeholder: "email" %>
         amount: <%= text_input :user, :amount, placeholder: "Initial amount" %>
         <%= submit "Add", phx_disable_with: "Adding..." %>
+
+        <button  type="button"><%= @button_label %> </button>
     </form>
 
     <%=for user <- @users do %>
