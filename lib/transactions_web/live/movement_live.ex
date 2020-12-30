@@ -20,5 +20,3 @@ defmodule TransactionsWeb.MovementLive do
     assign(socket, movements: Movements.list_movements())
   end
 end
-
-assign(socket, movements?: movements?(socket))}
