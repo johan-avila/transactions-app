@@ -12,7 +12,7 @@ defmodule TransactionsWeb.MovementLive do
     {:noreply, fetch(socket)}
   end
   #Watcher (Phoenix live)
-  def handle_event({Movements,  [ :movement | _], _}, socket) do
+  def handle_info({Movements,  [ :movement | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
 
