@@ -1,5 +1,10 @@
 # Transactions
 
+Before start...
+ERLANG version ("23")
+ELIXIR verrsion ("1.7")
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
