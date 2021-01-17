@@ -12,7 +12,7 @@ defmodule TransactionsWeb.Endpoint do
 
   # Connections closed in  45 seconds
   socket "/socket", TransactionsWeb.UserSocket,
-    websocket: [timeout: 45_000],
+    websocket: true,
     longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
