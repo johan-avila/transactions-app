@@ -1,13 +1,17 @@
+
 use Mix.Config
 
 # Configure your database
+#####
 config :transactions, Transactions.Repo,
   username: "root",
   password: "password",
   database: "transactions_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 1
+######
+
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
