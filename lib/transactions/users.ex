@@ -13,8 +13,9 @@ defmodule Transactions.Users do
     Phoenix.PubSub.subscribe(Transactions.PubSub, @topic)
   end
 
-  defp brodcast_change({:ok, result }, event) do
-    Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+  defp broadcast_change({:ok, result }, event) do
+    info = Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+    {info , result}
   end
 
   @doc """
@@ -62,7 +63,7 @@ defmodule Transactions.Users do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
-    |> brodcast_change([:user, :created])
+    |> broadcast_change([:user, :created])
   end
 
   @doc """
@@ -81,7 +82,7 @@ defmodule Transactions.Users do
     user
     |> User.changeset(attrs)
     |> Repo.update()
-    |> brodcast_change([:user, :updated])
+    |> broadcast_change([:user, :updated])
   end
 
   @doc """
@@ -97,9 +98,7 @@ defmodule Transactions.Users do
 
   """
   def delete_user(%User{} = user) do
-    user
-    |> Repo.delete()
-    |> brodcast_change([:user, :deleted])
+    Repo.delete(user) |> broadcast_change([:user, :deleted])
   end
 
   @doc """

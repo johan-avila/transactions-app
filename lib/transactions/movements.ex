@@ -14,7 +14,8 @@ defmodule Transactions.Movements do
   end
 
   defp broadcast_change({:ok, result}, event) do
-    Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+    info  = Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
+    {info , result}
   end
 
   @doc """

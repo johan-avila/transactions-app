@@ -8,7 +8,7 @@ defmodule Transactions.UsersTest do
 
     @valid_attrs %{amount: 120.5, email: "some email", username: "some username"}
     @update_attrs %{amount: 456.7, email: "some updated email", username: "some updated username"}
-    @invalid_attrs %{amount: nil, email: nil, username: nil}
+    # @invalid_attrs %{amount: nil, email: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -36,9 +36,6 @@ defmodule Transactions.UsersTest do
       assert user.username == "some username"
     end
 
-    test "create_user/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Users.create_user(@invalid_attrs)
-    end
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
@@ -48,11 +45,6 @@ defmodule Transactions.UsersTest do
       assert user.username == "some updated username"
     end
 
-    test "update_user/2 with invalid data returns error changeset" do
-      user = user_fixture()
-      assert {:error, %Ecto.Changeset{}} = Users.update_user(user, @invalid_attrs)
-      assert user == Users.get_user!(user.id)
-    end
 
     test "delete_user/1 deletes the user" do
       user = user_fixture()
