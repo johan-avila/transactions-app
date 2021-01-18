@@ -8,7 +8,6 @@ defmodule TransactionsWeb.Router do
     plug :put_root_layout, {TransactionsWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    # plug Plug.Cowboy.http MyPlug, []
   end
 
   pipeline :api do

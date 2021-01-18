@@ -13,8 +13,7 @@ defmodule TransactionsWeb.MovementLive do
     {:noreply, fetch(socket)}
   end
   #Watcher (Phoenix live)
-  # reason = if reason == :normal, do: {:shutdown, :closed}, else: reason
-  def handle_info({Movements,  [:movement | _], _}, socket) do
+  def handle_info({Movements,  [ :movement | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
 

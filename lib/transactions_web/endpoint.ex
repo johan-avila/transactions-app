@@ -10,6 +10,7 @@ defmodule TransactionsWeb.Endpoint do
     signing_salt: "oa8SblIF"
   ]
 
+  # Connections closed in  45 seconds
   socket "/socket", TransactionsWeb.UserSocket,
     websocket: true,
     longpoll: false
