@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    constainer:
+    container:
       image: elixir:1.7
     services: 
       mysql: 
