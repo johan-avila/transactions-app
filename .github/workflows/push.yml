@@ -1,0 +1,41 @@
+name: deploy
+
+on:
+  push: 
+    branches: 
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: elixir:1.7
+    services: 
+      mysql: 
+        image: mysql:latest
+        ports: 
+          - 3306:3306
+    steps:
+      - uses: actions/checkout@v1
+      - name: Istall dependencies
+        run:  | 
+          chmod -R 777 scripts/dependencies.sh
+          sh scripts/dependencies.sh
+      - name: Test 
+        env:
+          MYSQL_USERNAME_TEST: ${{ secrets.MYSQL_USERNAME_TEST }} 
+          MYSQL_PASSWORD_TEST: ${{ secrets.MYSQL_PASSWORD_TEST }}
+          MYSQL_DATABASE_TEST: ${{ secrets.MYSQL_DATABASE_TEST }}
+          MYSQL_HOST_TEST: ${{ secrets.MYSQL_HOST_TEST }}
+        run: | 
+          chmod -R 777 scripts/test.sh
+          sh scripts/test.sh
+      - name: Deployment 
+        env:
+          DEPLOY_STAGE: masculine-occasional-kiskadee
+          GIGALIXIR_EMAIL: ${{ secrets.GIGALIXIR_EMAIL }} 
+          GIGALIXIR_PASS: ${{ secrets.GIGALIXIR_PASS }}
+        run: | 
+          chmod -R 777 scripts/deploy.sh
+          sh scripts/deploy.sh
+  
