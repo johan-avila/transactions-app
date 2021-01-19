@@ -1,10 +1,16 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to Transactions-app!" %></h1>
-  <section>
-    <a href="/transactions"><button class="btn btn-primary">Create Trnsaction</button></a>
-    <div>
-      <a href="/users"><button class="btn btn-primary">Create User</button></a>
-      <a href="/api"><button class="btn btn-primary">Api</button></a>
-    </div>
-  </section>
+  <h1 class="fs-1"><%= gettext "Welcome to Transactions-app!" %></h1>
+  <div>
+      <a href="/transactions" class="btn btn-primary fs-4 mt-1"  >Create Transaction</a>
+      <a href="/users" class="btn btn-primary fs-4 mt-1" role="button">Create User</a>
+      <a href="/api/users" class="btn btn-primary fs-4 mt-1" role="button">Users API</a>
+  </div>
+  <div class="mt-5 text-start fs-3 fs-md-4">
+    <p>Hello welcome to "Transactions app", this app permise create transactions in real time.
+    if you want create transactions first do create one user because id user is required for create transaction.</p>
+    <h3 class="fs-2">Create user with Api</h3>
+    <p >If you want to create a user with the API, it is realli easy, it is only required that in the body of the request we send a user with the following structure in path "/api/users" </p>
+    <img src="/images/user-body.png" alt="Phoenix Framework Logo"/>
+
+  </div>
 </section>

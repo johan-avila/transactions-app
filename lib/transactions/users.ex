@@ -13,7 +13,7 @@ defmodule Transactions.Users do
     Phoenix.PubSub.subscribe(Transactions.PubSub, @topic)
   end
 
-  defp broadcast_change({:ok, result }, event) do
+  defp broadcast_change({:ok, result}, event) do
     info = Phoenix.PubSub.broadcast(Transactions.PubSub, @topic, {__MODULE__, event, result})
     {info , result}
   end

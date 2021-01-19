@@ -6,9 +6,8 @@
         amount: <%= text_input :user, :amount, placeholder: "Initial amount" %>
         <%= submit "Add", phx_disable_with: "Adding..." %>
     </form>
-
     <%=for user <- @users do %>
-        <div> <%=  user.id %></div>
+        <div> <%=  user.id %> <%=  user.username%> <%=  user.email %> </div>
     <% end %>
 
 </div>

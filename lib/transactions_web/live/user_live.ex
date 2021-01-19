@@ -7,11 +7,13 @@ defmodule TransactionsWeb.UserLive do
     {:ok, fetch(socket)}
   end
 
-  @spec handle_event(<<_::24>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
+
   def handle_event("add", %{"user" => user}, socket) do
     Users.create_user(user)
+
     {:noreply, fetch(socket)}
   end
+
   def handle_info({Users,  [ :users | _], _}, socket) do
     {:noreply, fetch(socket)}
   end
