@@ -3,7 +3,7 @@ name: deploy
 on:
   push: 
     branches: 
-    - feature/ci-cd
+    - main
 
 jobs:
   deploy:
