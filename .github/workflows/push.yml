@@ -29,5 +29,4 @@ jobs:
         run: | 
           chmod -R 777 scripts/test.sh
           sh scripts/test.sh
-      env: 
   
