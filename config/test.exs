@@ -9,7 +9,7 @@ config :transactions, Transactions.Repo,
   username: "root",
   password: "password",
   database: "transactions_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "mysql",
+  hostname: "192.168.0.3",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
