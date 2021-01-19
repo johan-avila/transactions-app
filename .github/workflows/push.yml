@@ -1,0 +1,33 @@
+mane: deploy
+
+on:
+  push: 
+    branches: 
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    constainer:
+      image: elixir:1.7
+    services: 
+      mysql: 
+        image: mysql:latest
+        ports: 
+          - 3306:3306
+        env: 
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+          MYSQL_HOST: "/"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Istall dependencies
+        run:  | 
+          chmod -R 777 scripts/dependencies.sh
+          sh scripts/dependencies.sh
+      - name: Test 
+        run: | 
+          chmod -R 777 scripts/dependencies.sh
+          sh scripts/dependencies.sh
+      env: 
+        POOL_SIZE: 1
