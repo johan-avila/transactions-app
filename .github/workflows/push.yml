@@ -20,7 +20,7 @@ jobs:
           MYSQL_PASSWORD: password
           MYSQL_HOST: "/"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - name: Istall dependencies
         run:  | 
           chmod -R 777 scripts/dependencies.sh
@@ -29,6 +29,4 @@ jobs:
         run: | 
           chmod -R 777 scripts/test.sh
           sh scripts/test.sh
-      env: 
-        POOL_SIZE: 1
   
