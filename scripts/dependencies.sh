@@ -1,9 +1,11 @@
 #!/bin/bash
 
+mix local.rebar --force
+mix local.hex --force
+
 mix deps.get
 
-sudo apt-get update
-sudo apt-get install -y wget libc-bin python3-pip
+apt-get update
+apt-get install -y wget libc-bin python3-pip
 
-# Install gigalixir
 pip3 install gigalixir
