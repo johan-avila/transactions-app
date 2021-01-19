@@ -15,10 +15,6 @@ jobs:
         image: mysql:latest
         ports: 
           - 3306:3306
-        env: 
-          MYSQL_USER: root
-          MYSQL_PASSWORD: password
-          MYSQL_HOST: "/"
     steps:
       - uses: actions/checkout@v1
       - name: Istall dependencies
