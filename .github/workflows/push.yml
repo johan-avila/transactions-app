@@ -3,7 +3,7 @@ mane: deploy
 on:
   push: 
     branches: 
-    - main
+    - feature/ci-cd
 
 jobs:
   deploy:
