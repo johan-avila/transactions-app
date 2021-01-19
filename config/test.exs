@@ -8,10 +8,10 @@ use Mix.Config
 # database: "transactions_test#{System.get_env("MIX_TEST_PARTITION")}",
 
 config :transactions, Transactions.Repo,
-  username: "uknwegb7nzrso8ec",
-  password: "Hs1RWjdwM2GfVf2IPI9v",
-  database: "bmmoxnz9sjkl6ogdsuul",
-  hostname: "bmmoxnz9sjkl6ogdsuul-mysql.services.clever-cloud.com",
+  username: System.get_env("MYSQL_USERNAME_TEST") || "root",
+  password: System.get_env("MYSQL_PASSWORD_TEST") || "password",
+  database: System.get_env("MYSQL_DATABASE_TEST") || "transactions_test",
+  hostname: System.get_env("MYSQL_HOST_TEST") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
