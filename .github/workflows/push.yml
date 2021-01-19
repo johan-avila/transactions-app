@@ -1,4 +1,4 @@
-mane: deploy
+name: deploy
 
 on:
   push: 
