@@ -9,10 +9,25 @@
       <%= submit "Add", phx_disable_with: "Adding..." %>
     </form>
 
-    <%= for movement <- @movements do %>
-       <div>
-            <div> <%= movement.concept %> </div>
-            <div> <%= movement.amount %> </div>
-       </div>
-    <% end %>
+
+    <table class="table-primary">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">id</th>
+            <th scope="col">concept</th>
+            <th scope="col">amount</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            <%=for movement <- @movements do %>
+                <tr>
+                    <th scope="row"><%=  movement.id %></th>
+                    <td> <%= movement.concept %></td>
+                    <td> <%= movement.amount %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
 </div>
